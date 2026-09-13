@@ -24,16 +24,16 @@ format:
     fig-align: center
 ---
 
-## About me {#about-me}
+## About me {#about-me .tight}
 
 ::: {.card-green}
 **Biodiversity Monitoring Specialist**, Department of Biodiversity Monitoring, Nature Conservation Agency of the Czech Republic (NCA CR).
 :::
 
 - **Background** – MSci Zoology (2022), supervised by Prof. Jason Matthiopoulos, University of Glasgow, UK
-- **Current role** – supporting digital transformation of nature conservation management through semi-automated site condition evaluation and framework within the **Nature Conservation Information System**
-- **BiodivPond** – responsible for the coordination and leading the Biodiversa+ BiodivPond pilot
-- **Experience I bring to it** – 6+ years of data analysis and management, working with sensor-based methods in biodiversity monitoring, international collaboration as part of the Biodiversa+ WP2
+- **Current role** – supporting the digital transformation of conservation management through semi-automated site condition assessment within the **Nature Conservation Information System**
+- **BiodivPond** – responsible for coordinating and leading the Biodiversa+ BiodivPond pilot
+- **Experience I bring** – 6+ years of data analysis and management, sensor-based biodiversity monitoring, and international collaboration within **Biodiversa+ WP2**
 - **Toolkit** – [field surveys]{.chip} [R]{.chip} [spatial analysis]{.chip} [long-term monitoring]{.chip}
 
 
@@ -44,14 +44,14 @@ format:
 ![](images/nausithous.jpg){.species-photo}
 
 ::: {.fine .muted}
-***Phengaris nausithous***
+*Phengaris nausithous*
 :::
 :::
 ::: {.column width="73%"}
 **Modelling the Effects of Resource Occurrence on the Metapopulation Dynamics of an Endangered Butterfly** · 2022
 
 - A butterfly whose life cycle depends on the foodplant *Sanguisorba officinalis* and *Myrmica* spp. host ants
-- 126 habitat patches in the Křivoklátsko Protected Landscape Area, modelled as a metapopulation of persistence and colonisation
+- 126 habitat patches in the Křivoklátsko Protected Landscape Area, modelled as a metapopulation through patch persistence and colonisation
 - A **Bayesian model fitted in JAGS**, built from the national **Species Occurrence Database** and **Habitat Mapping Database** rather than from field survey
 :::
 ::::
@@ -74,10 +74,10 @@ A **critical evaluation of traditional and novel methods** for monitoring the st
 ### Aims
 - Compare **detection success** of eDNA and PAM against conventional field methods
 - Test their reliability for **screening habitat quality** and detecting Annex II flagship species
-- Inform  conservation on the **best methods for monitoring and management** of amphibian populations and habitats
+- Inform conservation on the **best methods for monitoring and management** of amphibian populations and habitats
 
 
-## Aim and outputs {#aim}
+## Aim and outputs {#outputs}
 
 ::: {.card-yellow}
 A **critical evaluation of traditional and novel methods** for monitoring the status of amphibian populations and habitats, including their **applicability for practical nature conservation**, and the **assessment of amphibian population status** in the Czech Natura 2000 network after seven years of standardised monitoring.
@@ -87,7 +87,6 @@ A **critical evaluation of traditional and novel methods** for monitoring the st
 - **Scientific publications** on the method comparison
 - **Recommendations** for biodiversity observation, and the **limits** of both approaches
 - **Evaluation of amphibian status** in the Czech Natura 2000 network after seven years of standardised data
-:::
 
 
 ## The methods compared {#comparison}
@@ -117,7 +116,7 @@ At the **60 BiodivPond core ponds**, amphibians and fish are surveyed by **eDNA 
 :::
 
 ::: {.small .muted}
-An inter-laboratory ring test on identical eDNA samples runs alongside, to establish consistency in extraction, amplification and species detection.
+An inter-laboratory ring test on identical eDNA samples runs alongside to establish consistency in extraction, amplification and species detection.
 :::
 
 ## [1]{.strand-num} Method comparison {#h1}
@@ -127,7 +126,7 @@ An inter-laboratory ring test on identical eDNA samples runs alongside, to estab
 :::
 
 ::: {.card-green}
-[H1b]{.hyp} For **those species with a similar detection rates**, ddPCR and umbrella trap results will **correlate** – and umbrella traps can therefore be used to **calibrate ddPCR**.
+[H1b]{.hyp} For **those species with similar detection rates**, ddPCR and umbrella trap results will **correlate** – and umbrella traps can therefore be used to **calibrate ddPCR**.
 :::
 
 - Paired eDNA and traditional sampling at the same ponds, with **repeated traditional sampling** for *Triturus* spp. abundance
@@ -141,15 +140,15 @@ H1 and H1b are the hypotheses as stated. The supporting bullets come from workpl
 ## [2]{.strand-num} Seven years of standardised monitoring {#h2}
 
 ::: {.card-blue}
-[H2]{.hyp} **Both local and landscape factors** play a significat role in amphibian population trends – with **management more important at smaller, more isolated sites**.
+[H2]{.hyp} **Both local and landscape factors** play a significant role in amphibian population trends – with **management more important at smaller, more isolated sites**.
 :::
 
 :::: {.columns}
 ::: {.column width="50%"}
 ### Local
-- Management  
-- Hydrology  
-- Fish presence  
+- Management
+- Hydrology
+- Fish presence
 :::
 ::: {.column width="50%"}
 ### Landscape
@@ -160,7 +159,7 @@ H1 and H1b are the hypotheses as stated. The supporting bullets come from workpl
 ::::
 
 ::: {.card-yellow}
-Testing this hypothesis will utilise data from 7+ years of standardised monitoring scheme in the Czech Natura 2000 network. It will focus on  **analysing the relationship between population trends, site characteristics, management practices, land cover and land use in the surrounding area**.
+Testing this hypothesis will utilise data from 7+ years of a standardised monitoring scheme in the Czech Natura 2000 network. It will focus on **analysing the relationship between population trends, site characteristics, management practices, land cover and land use in the surrounding area**.
 :::
 
 ::: {.notes}
@@ -218,7 +217,7 @@ identified – eDNA returns the fish community from the same water sample.
 Total EC contribution **€1,083,899**, of which **€104,000** for coordination at NCA CR.
 :::
 
-## PROSPECTIVE LIFE {#life}
+## Prospective LIFE {#life}
 
 ::: {.map-card}
 A national-scale LIFE project coordinated by NCA CR, alongside which two species action
@@ -230,19 +229,21 @@ plans relevant to this project are planned:
 ::: {.card-green}
 **National species action plan**
 
-***Epidalea calamita***  
-- Active management of breeding sites  
-- Habitat restoration and creation  
-- Population monitoring and research: space for PAM, eDNA, and traditional methods
+***Epidalea calamita***
+
+- Active management of breeding sites
+- Habitat restoration and creation
+- Population monitoring and research: space for PAM, eDNA and traditional methods
 :::
 :::
 ::: {.column width="50%"}
 ::: {.card-blue}
-**Regional species action plan**  
+**Regional species action plan**
 
-***Lissotriton montandoni*** – Beskydy  
-- Habitat restoration and creation  
-- Population monitoring and research: space for eDNA, and traditional methods  
+***Lissotriton montandoni*** – Beskydy
+
+- Habitat restoration and creation
+- Population monitoring and research: space for eDNA and traditional methods
 - Research on terrestrial habitat use and connectivity
 :::
 :::

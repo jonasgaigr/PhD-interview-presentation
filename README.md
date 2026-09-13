@@ -21,8 +21,8 @@ to PDF with background graphics enabled.
 |---|---|
 | `index.qmd` | The deck — 13 slides, ~10 minutes |
 | `theme/biodivpond.scss` | Theme ported from the site's `styles.css` + `colors.json` |
-| `images/` | Logos copied from the BiodivPond repo |
-| `docs/` | Render output (gitignored) |
+| `images/` | Logos and photographs; `colek.jpg`, `logo-aopk.svg` and `biodivpond_header_crop.png` are unused |
+| `docs/` | Render output (gitignored, except the committed `docs/index.html`) |
 
 ## Sources
 
@@ -38,8 +38,10 @@ Every factual claim in the deck traces to one of these. Nothing else was added.
 
 ### Discrepancies to resolve
 
-- **Pond count** — the deck uses **580** (80 core + 500 citizen science, per workplan
-  §3.2 and §4.1). You said 560.
+- **Pond count** — the deck uses **560** (60 core + 500 citizen science). The workplan
+  §3.2 and §4.1 read 80 core ponds; confirm which figure is current before the talk.
+- **Trapping method** — the deck says *umbrella trapping*, `topic.md` says *funnel
+  trapping*. Pick one and use it in both.
 - **BiodivPond timeline** — workplan §4.3 reads "30 months from January 1st 2026, to
   June 30th 2027", but 30 months from January 2026 ends June 2028, and the Gantt runs
   into 2028 Q2. No dates are shown on the slides because of this.
@@ -65,22 +67,24 @@ Palette taken from the BiodivPond site:
   Add `::: {.divider-sub}` inside for the subtitle line.
 - `[text]{.chip}` — rounded green pill, for data sources and methods.
 - `[text]{.todo}` / `::: {.todo-block}` — **yellow placeholder markers.**
-- `.small`, `.smaller`, `.muted`, `.accent` — type helpers.
+- `.small`, `.fine`, `.muted`, `.accent` — type helpers.
+- `[text]{.hyp}` — dark-green hypothesis badge; `[n]{.strand-num}` — numbered circle
+  for the three research strands.
+- `## Title {.tight}` — steps that slide's top-level body text down to 0.92em, for a
+  slide whose copy would otherwise run into the footer.
 - `::: {.logo-row}` — centred, evenly spaced logo strip.
 
 ## Before the interview
 
-Search the deck for `TODO` and clear every one — they render in loud yellow on
-purpose, so nothing can be missed on screen:
+The deck is content-complete — no `.todo` placeholders remain. If you add any while
+editing, they render in loud yellow on purpose, so nothing can be missed on screen:
 
 ```powershell
-Select-String -Path index.qmd -Pattern 'TODO'
+Select-String -Path index.qmd -Pattern 'todo'
 ```
 
-The deck is content-complete. Only **2 administrative markers** remain:
-
-- **Slide 2** — current job title / affiliation
-- **Slide 13** — email / ORCID
+Still worth a last pass: the discrepancies listed above, and the date in the YAML
+header (`date: 09/16/2026`).
 
 
 ### Apparent typos noticed in the thesis text
