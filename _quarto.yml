@@ -3,3 +3,8 @@ project:
   output-dir: docs
   render:
     - index.qmd
+  # `quarto render` produces the deck and then the PDF handout beside it.
+  # Skipped on partial re-renders so `quarto preview` stays fast - see the
+  # guard at the top of the script.
+  post-render:
+    - powershell -NoProfile -ExecutionPolicy Bypass -File scripts/render-pdf.ps1

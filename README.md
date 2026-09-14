@@ -8,12 +8,26 @@ A Quarto reveal.js deck styled to match the
 Quarto is installed at `%LOCALAPPDATA%\Programs\Quarto\bin\quarto.cmd` (not on PATH).
 
 ```powershell
-& "$env:LOCALAPPDATA\Programs\Quarto\bin\quarto.cmd" render          # -> docs/index.html
+& "$env:LOCALAPPDATA\Programs\Quarto\bin\quarto.cmd" render          # -> docs/ (html + pdf)
 & "$env:LOCALAPPDATA\Programs\Quarto\bin\quarto.cmd" preview index.qmd   # live reload
 ```
 
-Export to PDF: open the deck in Chrome, append `?print-pdf` to the URL, then print
-to PDF with background graphics enabled.
+`render` writes both outputs — the deck at `docs/index.html` and a PDF handout at
+`docs/PhD-interview-presentation.pdf`. The PDF step is a post-render hook in
+`_quarto.yml`, skipped during `preview` so the live-reload loop stays fast.
+
+To export the PDF on its own:
+
+```powershell
+.\scripts\render-pdf.ps1
+.\scripts\render-pdf.ps1 -Notes -Output docs/rehearsal-notes.pdf   # notes on their own page
+```
+
+reveal.js has no LaTeX path — the layout, the callout cards and the green dividers
+are all CSS — so the only export that looks like the talk is the one the browser
+itself prints. The script opens the rendered deck with `?print-pdf`, which switches
+reveal to one slide per page, and drives headless Chrome (or Edge) over it. Set
+`$env:CHROME` if neither is in the usual place.
 
 ## Files
 
@@ -21,8 +35,10 @@ to PDF with background graphics enabled.
 |---|---|
 | `index.qmd` | The deck — 13 slides, ~10 minutes |
 | `theme/biodivpond.scss` | Theme ported from the site's `styles.css` + `colors.json` |
-| `images/` | Logos and photographs; `colek.jpg`, `logo-aopk.svg` and `biodivpond_header_crop.png` are unused |
-| `docs/` | Render output (gitignored, except the committed `docs/index.html`) |
+| `theme/print-pdf.html` | Per-page footer and slide number, for the `?print-pdf` export only |
+| `scripts/render-pdf.ps1` | Drives headless Chrome over the deck to produce the PDF |
+| `images/` | Logos and photographs; `colek.jpg` and `biodivpond_header_crop.png` are unused |
+| `docs/` | Render output — `index.html` and `PhD-interview-presentation.pdf`. Gitignored: `/docs/` excludes the whole directory, so the `!docs/index.html` line below it has never taken effect |
 
 ## Sources
 

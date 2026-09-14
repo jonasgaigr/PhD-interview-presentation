@@ -22,6 +22,10 @@ format:
     embed-resources: false
     link-external-newwindow: true
     fig-align: center
+    # PDF export (scripts/render-pdf.ps1 opens the deck with ?print-pdf)
+    pdf-separate-fragments: false
+    pdf-max-pages-per-slide: 1
+    include-after-body: theme/print-pdf.html
 ---
 
 ## About me {#about-me .tight}
@@ -263,7 +267,7 @@ Jonáš Gaigr · [jonas.gaigr@aopk.gov.cz](mailto:jonas.gaigr@aopk.gov.cz) ·
 :::
 
 ::: {.logo-row}
-![](images/logo_zel.jpg){height="90"}
+![](images/logo-aopk.svg){height="90"}
 ![](images/biodiversa_logo.jpeg){height="90"}
 ![](images/eu_co_funded_en.jpg){height="90"}
 :::

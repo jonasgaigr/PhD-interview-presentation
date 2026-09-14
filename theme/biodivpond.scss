@@ -337,7 +337,9 @@ $code-block-font-size:    0.62em;
 // Dark grey on the green title and divider slides is unreadable. Reveal marks
 // those slides by putting .has-dark-background on <body>, so key off that.
 // Reveal bubbles the contrast class onto the .reveal element, not <body>.
-.reveal.has-dark-background {
+// Scoped to the screen: in ?print-pdf mode the "current slide" is always the
+// first one, so this would paint the furniture white on every printed page.
+html:not(.print-pdf) .reveal.has-dark-background {
   .footer,
   .footer p,
   .slide-number,
@@ -493,4 +495,68 @@ $code-block-font-size:    0.62em;
   margin: 0;          // the markdown already puts a space before the iD
   border-radius: 0;
   box-shadow: none;
+}
+
+// -------------------------------------------------------------------------
+//  PDF export  ( ?print-pdf - driven by scripts/render-pdf.ps1 )
+// -------------------------------------------------------------------------
+// Reveal lays the deck out one slide per printed page, wrapping each slide in
+// a .pdf-page. Two things then need correcting for the PDF to read well:
+//
+//   1. The deck's footer is position:fixed, so the browser repeats one single
+//      painting of it on every page - it cannot be light on the green slides
+//      and dark on the white ones. theme/print-pdf.html copies its text into
+//      each .pdf-page instead, and tags the green pages data-print-dark.
+//   2. Backgrounds carry meaning here (the callout cards, the green dividers,
+//      the chips), so colour printing is forced rather than left to the
+//      browser's ink-saving default.
+
+html.print-pdf {
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  // Replaced per page by .print-footer below
+  .reveal > .footer { display: none !important; }
+
+  // On-screen chrome that has no meaning on paper
+  .reveal .progress,
+  .reveal .controls { display: none !important; }
+
+  .reveal .pdf-page {
+    .print-footer {
+      position: absolute;
+      bottom: 14px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1;
+      color: rgba($bp-black, 0.55);
+    }
+
+    // Reveal's own per-page number. 14px of grey-on-white is hard to read in a
+    // handout, so it is set a little larger and darker than on screen.
+    .slide-number-pdf {
+      top: 10px;
+      right: 12px;
+      bottom: auto;
+      left: auto;
+      padding: 0;
+      background-color: transparent;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba($bp-black, 0.55);
+    }
+
+    // The green title, divider and closing pages need the light treatment
+    &[data-print-dark] {
+      .print-footer,
+      .slide-number-pdf {
+        color: rgba($bp-white, 0.80);
+      }
+    }
+  }
 }

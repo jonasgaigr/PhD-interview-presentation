@@ -1,0 +1,51 @@
+<script>
+  // PDF export helper - only ever runs when the deck is opened with ?print-pdf,
+  // so the live presentation is untouched.
+  //
+  // Reveal's print layout wraps every slide in a .pdf-page and gives each one
+  // its own .slide-number-pdf, but the deck footer stays a single position:fixed
+  // element that the browser repeats identically on every page. It therefore
+  // cannot be light on the green slides and dark on the white ones. Copy its
+  // text into each page instead, and mark the green pages so the stylesheet can
+  // flip both the footer and the slide number to light type.
+  (function () {
+    if (!/print-pdf/gi.test(window.location.search)) return;
+
+    var attempts = 0;
+
+    function decorate() {
+      var pages = document.querySelectorAll(".reveal .slides .pdf-page");
+
+      // Reveal builds this layout during start-up; wait for it (up to ~10s).
+      if (pages.length === 0) {
+        if (attempts++ < 200) setTimeout(decorate, 50);
+        return;
+      }
+
+      var source = document.querySelector(".reveal > .footer");
+      var text = source ? source.textContent.trim() : "";
+
+      Array.prototype.forEach.call(pages, function (page) {
+        var slide = page.querySelector("section");
+
+        // The title, divider and closing slides are the ones carrying a
+        // background colour; everything else prints on the near-white ground.
+        if (slide && slide.hasAttribute("data-background-color")) {
+          page.setAttribute("data-print-dark", "");
+        }
+
+        if (text && !page.querySelector(".print-footer")) {
+          var footer = document.createElement("div");
+          footer.className = "print-footer";
+          footer.textContent = text;
+          page.appendChild(footer);
+        }
+      });
+
+      // Signals to scripts/render-pdf.ps1 that the pages are ready to print.
+      document.documentElement.setAttribute("data-print-ready", "");
+    }
+
+    decorate();
+  })();
+</script>

@@ -2,6 +2,8 @@
 /docs/
 *.html
 !docs/index.html
+# Source, not render output: the ?print-pdf helper included by index.qmd
+!theme/print-pdf.html
 .Rproj.user
 .Rhistory
 .RData
