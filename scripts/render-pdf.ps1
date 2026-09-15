@@ -39,6 +39,18 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+# Paths are resolved against the project root, not the caller's location, so the
+# script behaves the same from the repo root, from scripts/, or from Quarto.
+$root = Split-Path -Parent $PSScriptRoot
+
+# GitHub Pages serves this repo from main:/docs, and without this marker it
+# hands the directory to Jekyll, which chokes on the Liquid-like braces in the
+# reveal.js assets. Written on every render - partial ones included - so a fresh
+# docs/ is never published without it.
+$nojekyll = Join-Path $root "docs\.nojekyll"
+New-Item -ItemType Directory -Force -Path (Split-Path -Parent $nojekyll) | Out-Null
+if (-not (Test-Path $nojekyll)) { New-Item -ItemType File -Path $nojekyll | Out-Null }
+
 # Quarto runs this hook after every project render, a live preview included.
 # Re-exporting the PDF on each save would spawn a browser every few seconds, so
 # when Quarto is the caller the export is limited to a full `quarto render`.
@@ -48,9 +60,6 @@ if (-not $Force -and $env:QUARTO_PROJECT_OUTPUT_DIR -and $env:QUARTO_PROJECT_REN
     return
 }
 
-# Paths are resolved against the project root, not the caller's location, so the
-# script behaves the same from the repo root, from scripts/, or from Quarto.
-$root = Split-Path -Parent $PSScriptRoot
 # An absolute path is taken as given; a relative one hangs off the project root.
 function Resolve-ProjectPath([string] $path) {
     if ([System.IO.Path]::IsPathRooted($path)) { return $path }

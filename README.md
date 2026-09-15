@@ -29,6 +29,20 @@ itself prints. The script opens the rendered deck with `?print-pdf`, which switc
 reveal to one slide per page, and drives headless Chrome (or Edge) over it. Set
 `$env:CHROME` if neither is in the usual place.
 
+## Deploy
+
+GitHub Pages serves the deck from **`main` branch, `/docs` folder** (Settings →
+Pages → Source: *Deploy from a branch*). So publishing is just render + commit:
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\Quarto\bin\quarto.cmd" render
+git add docs && git commit -m "render" && git push
+```
+
+The `docs/.nojekyll` marker matters: served from the repo root with Jekyll on,
+Pages tried to parse `index.qmd` and `270023G_Investigation.docx.md` as Liquid
+templates and the build failed on a `{{S}` in the prose.
+
 ## Files
 
 | Path | Purpose |
@@ -38,7 +52,8 @@ reveal to one slide per page, and drives headless Chrome (or Edge) over it. Set
 | `theme/print-pdf.html` | Per-page footer and slide number, for the `?print-pdf` export only |
 | `scripts/render-pdf.ps1` | Drives headless Chrome over the deck to produce the PDF |
 | `images/` | Logos and photographs; `colek.jpg` and `biodivpond_header_crop.png` are unused |
-| `docs/` | Render output — `index.html` and `PhD-interview-presentation.pdf`. Gitignored: `/docs/` excludes the whole directory, so the `!docs/index.html` line below it has never taken effect |
+| `docs/` | Render output — `index.html`, `PhD-interview-presentation.pdf` and the reveal.js assets. Committed, because this is what GitHub Pages publishes |
+| `docs/.nojekyll` | Stops Pages running Jekyll over the output; re-created by `scripts/render-pdf.ps1` on every render |
 
 ## Sources
 

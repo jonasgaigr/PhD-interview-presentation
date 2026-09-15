@@ -1,7 +1,8 @@
 /.quarto/
-/docs/
 *.html
-!docs/index.html
+# docs/ is the deployed site (GitHub Pages serves main:/docs), so the render
+# output is committed - the `*.html` line above must not swallow it.
+!/docs/**
 # Source, not render output: the ?print-pdf helper included by index.qmd
 !theme/print-pdf.html
 .Rproj.user
